@@ -20,31 +20,17 @@ class BreedDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
         descriptionLabel.text = dogBreed?.description
-        
         activityIndicator = showActivityIndicator(in: view)
-        
         descriptionLabel.isHidden = true
         dogBreedImage.isHidden = true
-        
         fetchImage(from: dogBreed?.image.url ?? "")
-        
-        
-//        dogBreedImage.fetchImageWithAF(from: dogBreed?.image.url ?? "")
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//            self.activityIndicator.stopAnimating()
-//            self.descriptionLabel.isHidden = false
-//            self.dogBreedImage.isHidden = false
-//        }
     }
     
     
     private func fetchImage(from url: String) {
-        dogBreedImage.fetchImageWithAF(from: url)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        dogBreedImage.fetchImageWithAF(from: url)        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.activityIndicator.stopAnimating()
             self.descriptionLabel.isHidden = false
             self.dogBreedImage.isHidden = false

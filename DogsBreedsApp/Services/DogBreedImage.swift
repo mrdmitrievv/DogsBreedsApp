@@ -4,18 +4,6 @@ import AlamofireImage
 
 class DogBreedImage: UIImageView {
     
-    /*
-    //Способ 1: Загрузка изображения из сети c помощью ImageManager
-    ImageManager.shared.fetchImageOfBreed(from: imageUrl) { data in
-        DispatchQueue.main.async {
-            self.image = UIImage(data: data)
-        }
-    
-        
-    //Сохраним изображение в кэш
-        self.saveDataToCache(with: data, and: response)
-    }*/
-    
     func fetchImageWithAF(from url: String) {
         guard let imageUrl = URL(string: url) else {
             print("url doesnt exist")
@@ -35,7 +23,7 @@ class DogBreedImage: UIImageView {
                     self.image = data
                     self.saveDataToCache(with: response.data!, and: response.response!)
                 }
-            case . failure(let error):
+            case .failure(let error):
                 print("There is an error with getting images: \(error)")
             }
         }

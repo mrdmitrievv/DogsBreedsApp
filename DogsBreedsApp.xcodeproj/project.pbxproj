@@ -141,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				AB6B9CC428116B4F00EFAB02 /* TableViewCell.swift */,
-				AB6B9CC928118AFF00EFAB02 /* DogBreedImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				AB6B9CC628116CA500EFAB02 /* NetworkManager.swift */,
+				AB6B9CC928118AFF00EFAB02 /* DogBreedImage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
