@@ -1,27 +1,11 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-    @IBOutlet weak var breedNameLabel: UILabel!
-    @IBOutlet weak var dogBreedImage: DogBreedImage! {
-        didSet {
-            dogBreedImage.contentMode = .scaleAspectFit
-            dogBreedImage.clipsToBounds = true
-            dogBreedImage.layer.cornerRadius = dogBreedImage.bounds.height / 2
-            dogBreedImage.backgroundColor = .black
-        }
-    }
-    
-    func configureWithIndex(with dogBreeds: [DogBreed], and indexPathRow: Int) {
-        let dogBreed = dogBreeds[indexPathRow]
-        breedNameLabel.text = dogBreed.name                        
-        
-        DispatchQueue.main.async {
-            if dogBreed.referenceImageId == dogBreed.image.id {
-                self.dogBreedImage.fetchImageWithAF(from: dogBreed.image.url)
-            } else {
-                self.dogBreedImage.image = nil
-            }
-            
-        }        
+    func configure(with dogBreed: DogBreed) {
+        var content = defaultContentConfiguration()
+        content.text = dogBreed.name
+        guard let imageData = DogBreedImage.shared.fetchImageData(from: dogBreed.image.url) else { return }
+        content.image = UIImage(data: imageData)
+        contentConfiguration = content
     }
 }

@@ -2,27 +2,27 @@ import UIKit
 
 class BreedsTableViewController: UIViewController {
     
-    @IBOutlet weak var TableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var dogsBreeds: [DogBreed] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TableView.rowHeight = 80
-        fetchData(from: URLS.breedURL.rawValue)
+        tableView.rowHeight = 80
+        getDogBreeds()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = TableView.indexPathForSelectedRow else { return }
-        let dogBreed = dogsBreeds[indexPath.row]
         let breedDetailsVC = segue.destination as! BreedDetailsViewController
-        breedDetailsVC.dogBreed = dogBreed
+        breedDetailsVC.dogBreed = sender as? DogBreed
     }
     
-    private func fetchData(from url: String?) {
-        NetworkManager.shared.fetchDataWithAF(from: url) { dogsBreeds in
+    private func getDogBreeds() {
+        NetworkManager.shared.fetchDataWithAF { dogsBreeds in
             self.dogsBreeds = dogsBreeds
-            self.TableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 }
@@ -34,8 +34,17 @@ extension BreedsTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        cell.configureWithIndex(with: dogsBreeds, and: indexPath.row)
+        let dogBreed = dogsBreeds[indexPath.row]
+        cell.configure(with: dogBreed)
         return cell
+    }
+}
+
+extension BreedsTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let dogBreed = dogsBreeds[indexPath.row]
+        performSegue(withIdentifier: "BreedDetails", sender: dogBreed)
     }
 }
 

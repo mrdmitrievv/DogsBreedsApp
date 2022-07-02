@@ -1,3 +1,5 @@
+import Foundation
+
 struct DogBreed: Decodable {
     let id: Int?
     let name: String?
@@ -17,16 +19,6 @@ struct DogBreed: Decodable {
         
         Bred for: \(bredFor ?? "not stated")
         """
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case name = "name"
-        case temperament = "temperament"
-        case origin = "origin"
-        case image = "image"
-        case bredFor = "bred_for"
-        case referenceImageId = "reference_image_id"
     }
 }
 
