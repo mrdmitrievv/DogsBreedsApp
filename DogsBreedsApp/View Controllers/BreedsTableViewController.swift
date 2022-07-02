@@ -4,7 +4,7 @@ class BreedsTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var dogsBreeds: [DogBreed] = []
+    private var dogsBreeds: [DogBreed] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

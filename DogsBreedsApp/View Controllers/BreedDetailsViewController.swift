@@ -19,7 +19,7 @@ class BreedDetailsViewController: UIViewController {
     
     private func setupUI() {
         breedDescription.text = dogBreed.description
-        if let imageData = DogBreedImage.shared.fetchImageData(from: dogBreed.image.url) {
+        if let imageData = DogBreedImage.shared.fetchImageData(from: dogBreed.image?.url) {
             dogImage.image = UIImage(data: imageData)
         }
         activityIndicator.stopAnimating()

@@ -49,7 +49,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dogs breeds" id="sVe-cg-pTW"/>
                     <connections>
-                        <outlet property="TableView" destination="fBY-Cj-Jc0" id="4Nh-zw-dVP"/>
+                        <outlet property="tableView" destination="fBY-Cj-Jc0" id="x7b-fF-dnx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -94,7 +94,6 @@
                     <navigationItem key="navigationItem" id="qae-0M-FNe"/>
                     <connections>
                         <outlet property="breedDescription" destination="jVZ-0p-EBF" id="P4B-8D-yT8"/>
-                        <outlet property="descriptionLabel" destination="jVZ-0p-EBF" id="wIF-50-xRm"/>
                         <outlet property="dogImage" destination="Q1j-AU-Pgo" id="XWA-Fe-fon"/>
                     </connections>
                 </viewController>

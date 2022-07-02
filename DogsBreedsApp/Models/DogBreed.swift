@@ -5,7 +5,7 @@ struct DogBreed: Decodable {
     let name: String?
     let temperament: String?
     let origin: String?
-    let image: BreedImage
+    let image: BreedImage?
     let bredFor: String?
     let referenceImageId: String?
 
@@ -27,6 +27,3 @@ struct BreedImage: Decodable {
     let url: String
 }
 
-enum URLS: String {
-    case breedURL = "https://api.thedogapi.com/v1/breeds?api_key=310b9904-95ee-4e25-92f6-30d2e43adb3b"
-}
