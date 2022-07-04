@@ -39,7 +39,7 @@ class BreedDetailsViewModel: BreedDetailsViewModelProtocol {
     }
     
     var imageData: Data? {
-        DogBreedImage.shared.fetchImageData(from: dogBreed.image?.url)
+        ImageManager.shared.fetchImageData(from: dogBreed.image?.url)
     }
     
     private let dogBreed: DogBreed

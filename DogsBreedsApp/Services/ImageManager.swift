@@ -5,9 +5,7 @@ class ImageManager {
     static let shared = ImageManager()
     
     private init() {}
-    
-    
-    
+
     func fetchImageData(from url: String?) -> Data? {
         guard let stringURL = url else { return nil }
         

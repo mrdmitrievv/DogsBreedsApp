@@ -11,10 +11,12 @@ class TableViewCell: UITableViewCell {
     }
         
     @IBOutlet weak var breedName: UILabel!
+
+    var viewModel: TableViewCellViewModelProtocol!
         
-    func configure(with dogBreed: DogBreed) {
-        breedName.text = dogBreed.name
-        guard let imageData = DogBreedImage.shared.fetchImageData(from: dogBreed.image?.url) else { return }
+    func configure(with viewModel: TableViewCellViewModelProtocol) {
+        breedName.text = viewModel.breedName
+        guard let imageData = viewModel.imageData else { return }
         dogBreedImage.image = UIImage(data: imageData)
     }
 }

@@ -4,7 +4,14 @@ class BreedsTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var dogsBreeds: [DogBreed] = []
+    private var viewModel: BreedsTableViewModelProtocol! {
+        didSet {
+            viewModel.fetchDogBreeds {
+                self.tableView.reloadData()
+                self.spinnerView.stopAnimating()
+            }
+        }
+    }
     
     private var spinnerView: UIActivityIndicatorView!
     
@@ -14,26 +21,16 @@ class BreedsTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = BreedsTableViewModel()
         tableView.rowHeight = 80
         spinnerView = showActivityIndicator(in: view)
-        getDogBreeds()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let dogBreed = dogsBreeds[indexPath.row]
+        let viewModel = viewModel.viewModelForSelectedRow(at: indexPath)
         let breedDetailsVC = segue.destination as! BreedDetailsViewController
-        breedDetailsVC.dogBreed = dogBreed
-    }
-    
-    private func getDogBreeds() {
-        NetworkManager.shared.fetchDataWithAF { dogsBreeds in
-            self.dogsBreeds = dogsBreeds
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.spinnerView.stopAnimating()
-            }
-        }
+        breedDetailsVC.viewModel = viewModel
     }
     
     private func showActivityIndicator(in view: UIView) -> UIActivityIndicatorView {
@@ -50,13 +47,13 @@ class BreedsTableViewController: UIViewController {
 
 extension BreedsTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dogsBreeds.count
+        return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        let dogBreed = dogsBreeds[indexPath.row]
-        cell.configure(with: dogBreed)
+        let viewModel = viewModel.viewModelForCell(at: indexPath)
+        cell.configure(with: viewModel)
         return cell
     }
 }

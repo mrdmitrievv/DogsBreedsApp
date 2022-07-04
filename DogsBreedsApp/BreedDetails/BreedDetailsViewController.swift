@@ -17,17 +17,14 @@ class BreedDetailsViewController: UIViewController {
     @IBOutlet weak var lifeSpanLabel: UILabel!
     
     var viewModel: BreedDetailsViewModelProtocol!
-    var dogBreed: DogBreed!
     private var spinnerView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         spinnerView = showActivityIndicator(in: view)
-        viewModel = BreedDetailsViewModel(dogBreed: dogBreed)
         setupUI()
     }
-    
-    
+        
     private func setupUI() {
         breedNameLabel.text = viewModel.breedName
         originLabel.text = viewModel.origin ?? "n/a"
@@ -45,9 +42,7 @@ class BreedDetailsViewController: UIViewController {
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
-        
-        view.addSubview(activityIndicator)
-        
+        view.addSubview(activityIndicator)        
         return activityIndicator
     }
 }
