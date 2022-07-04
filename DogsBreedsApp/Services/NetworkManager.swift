@@ -1,13 +1,10 @@
-import Foundation
-import UIKit
 import Alamofire
-import AlamofireImage
 
 class NetworkManager {
     
     static let shared = NetworkManager()
     
-    private let api = "https://api.thedogapi.com/v1/breeds?api_key=310b9904-95ee-4e25-92f6-30d2e43adb3b"
+    private let api = "https://api.thedogapi.com/v1/breeds?limit=10&api_key=310b9904-95ee-4e25-92f6-30d2e43adb3b"
     
     private init() {}
     
