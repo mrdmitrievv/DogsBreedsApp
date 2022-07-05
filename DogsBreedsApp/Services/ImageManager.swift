@@ -10,6 +10,7 @@ class ImageManager {
         guard let stringURL = url else { return nil }
         
         if let cachedImageData = getCachedImage(from: stringURL) {
+            print(cachedImageData)
             return cachedImageData
         }
         

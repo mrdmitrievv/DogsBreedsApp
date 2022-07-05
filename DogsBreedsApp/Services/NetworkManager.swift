@@ -20,7 +20,7 @@ class NetworkManager {
                         guard let data = value else { return }
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        let dogBreeds = try decoder.decode([DogBreed].self, from: data)                        
+                        let dogBreeds = try decoder.decode([DogBreed].self, from: data)
                         DispatchQueue.main.async {
                             completion(dogBreeds)
                         }

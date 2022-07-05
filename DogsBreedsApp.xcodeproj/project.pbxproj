@@ -10,6 +10,7 @@
 		AB663B8F28732DDF00E62F31 /* BreedDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB663B8E28732DDF00E62F31 /* BreedDetailsViewModel.swift */; };
 		AB663B93287336D000E62F31 /* TableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB663B92287336D000E62F31 /* TableViewCellViewModel.swift */; };
 		AB663B95287338A200E62F31 /* BreedsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB663B94287338A200E62F31 /* BreedsTableViewModel.swift */; };
+		AB663B9728734B5B00E62F31 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB663B9628734B5B00E62F31 /* UIImageExtension.swift */; };
 		AB6B9CA828115EDE00EFAB02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B9CA728115EDE00EFAB02 /* AppDelegate.swift */; };
 		AB6B9CAA28115EDE00EFAB02 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B9CA928115EDE00EFAB02 /* SceneDelegate.swift */; };
 		AB6B9CAC28115EDE00EFAB02 /* BreedsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B9CAB28115EDE00EFAB02 /* BreedsTableViewController.swift */; };
@@ -31,6 +32,7 @@
 		AB663B8E28732DDF00E62F31 /* BreedDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailsViewModel.swift; sourceTree = "<group>"; };
 		AB663B92287336D000E62F31 /* TableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModel.swift; sourceTree = "<group>"; };
 		AB663B94287338A200E62F31 /* BreedsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsTableViewModel.swift; sourceTree = "<group>"; };
+		AB663B9628734B5B00E62F31 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		AB6B9CA428115EDE00EFAB02 /* DogsBreedsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogsBreedsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB6B9CA728115EDE00EFAB02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB6B9CA928115EDE00EFAB02 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		AB663B902873361300E62F31 /* BreedsTable */ = {
 			isa = PBXGroup;
 			children = (
+				AB663B9628734B5B00E62F31 /* UIImageExtension.swift */,
 				AB6B9CAB28115EDE00EFAB02 /* BreedsTableViewController.swift */,
 				AB663B94287338A200E62F31 /* BreedsTableViewModel.swift */,
 				AB663B912873364C00E62F31 /* BreedsTableViewCell */,
@@ -296,6 +299,7 @@
 				AB6B9CAA28115EDE00EFAB02 /* SceneDelegate.swift in Sources */,
 				AB663B95287338A200E62F31 /* BreedsTableViewModel.swift in Sources */,
 				AB663B8F28732DDF00E62F31 /* BreedDetailsViewModel.swift in Sources */,
+				AB663B9728734B5B00E62F31 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

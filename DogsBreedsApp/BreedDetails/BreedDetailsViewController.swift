@@ -24,7 +24,7 @@ class BreedDetailsViewController: UIViewController {
         spinnerView = showActivityIndicator(in: view)
         setupUI()
     }
-        
+    
     private func setupUI() {
         breedNameLabel.text = viewModel.breedName
         originLabel.text = viewModel.origin ?? "n/a"
@@ -32,7 +32,9 @@ class BreedDetailsViewController: UIViewController {
         bredForLabel.text = viewModel.bredFor ?? "n/a"
         lifeSpanLabel.text = viewModel.lifeSpan ?? "n/a"
         guard let imageData = viewModel.imageData else { return }
-        dogImage.image = UIImage(data: imageData)
+        DispatchQueue.main.async {
+            self.dogImage.image = UIImage(data: imageData)
+        }
         spinnerView.stopAnimating()
     }
     

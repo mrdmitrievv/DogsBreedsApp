@@ -6,7 +6,7 @@ class TableViewCell: UITableViewCell {
         didSet {
             dogBreedImage.contentMode = .scaleToFill
             dogBreedImage.clipsToBounds = true
-            dogBreedImage.layer.cornerRadius = dogBreedImage.bounds.height / 2            
+            dogBreedImage.layer.cornerRadius = dogBreedImage.bounds.height / 2
         }
     }
         
@@ -17,6 +17,9 @@ class TableViewCell: UITableViewCell {
     func configure(with viewModel: TableViewCellViewModelProtocol) {
         breedName.text = viewModel.breedName
         guard let imageData = viewModel.imageData else { return }
-        dogBreedImage.image = UIImage(data: imageData)
+        DispatchQueue.main.async {
+            let image = UIImage(data: imageData)
+            self.dogBreedImage.image = image?.compressTo(expectedSizeInMb: 1)
+        }
     }
 }
