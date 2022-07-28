@@ -5,28 +5,33 @@ import AlamofireImage
 class DogBreedImage: UIImageView {
     
     func fetchImageWithAF(from url: String) {
-        guard let imageUrl = URL(string: url) else {
-            print("url doesnt exist")
-            return
-        }
-        
-        // Загрузка изображения из кэша
-        if let cachedImage = getCachedImage(from: imageUrl) {
-            image = cachedImage
-            return
-        }
-        
-        AF.request(imageUrl).responseImage { response in
-            switch response.result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    self.image = data
-                    self.saveDataToCache(with: response.data!, and: response.response!)
-                }
-            case .failure(let error):
-                print("There is an error with getting images: \(error)")
+        let globalQueue = DispatchQueue.global(qos: .utility)
+        globalQueue.async {
+            guard let imageUrl = URL(string: url) else {
+                print("url doesnt exist")
+                return
             }
-        }
+            
+            // Загрузка изображения из кэша
+            if let cachedImage = self.getCachedImage(from: imageUrl) {
+                DispatchQueue.main.async {
+                    self.image = cachedImage
+                }
+                return
+            }
+            
+            AF.request(imageUrl).responseImage { response in
+                switch response.result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        self.image = data
+                        self.saveDataToCache(with: response.data!, and: response.response!)
+                    }
+                case .failure(let error):
+                    print("There is an error with getting images: \(error)")
+                }
+            }
+        }        
     }
     
     //Загрузка данных из кэша
@@ -35,7 +40,7 @@ class DogBreedImage: UIImageView {
         if let cachedResponse = URLCache.shared.cachedResponse(for: urlRequest) {
             return UIImage(data: cachedResponse.data)
         }
-
+        
         return nil
     }
     
@@ -47,6 +52,6 @@ class DogBreedImage: UIImageView {
         URLCache.shared.storeCachedResponse(cachedResponse, for: urlRequest)
     }
 }
-    
-  
+
+
 

@@ -21,7 +21,7 @@ class BreedsTableViewController: UIViewController {
     
     private func fetchData(from url: String?) {
         NetworkManager.shared.fetchDataWithAF(from: url) { dogsBreeds in
-            self.dogsBreeds = dogsBreeds
+            self.dogsBreeds = dogsBreeds            
             self.TableView.reloadData()
         }
     }
